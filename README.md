@@ -7,7 +7,8 @@
 ### FaceSkip 오프라인 버전 개발을 위한 코드 저장소입니다.<br>
 
 초기 버전은 DeepFace 모델을 기반으로 Flutter를 활용한 모바일 어플리케이션으로 만들었으나,<br>
-개발 공부도 할 겸, 별도의 FER 모델을 파인튜닝하여 오프라인 버전으로 다시 만들어 볼 예정입니다.
+개발 공부도 할 겸, 별도의 FER 모델을 파인튜닝하여 오프라인 버전으로 다시 만들어 볼 예정입니다.<br>
+(Flutter 버전 개발 문서는 [asset/introducing.pdf](https://github.com/alanworks72/faceskip/blob/main/asset/introducing.pdf) 참조하시면 됩니다.)
 
 기본적으로는 Jupyter Notebook을 활용하여 개발할 예정이며, 필요에 따라 Python 파일이<br>업로드 될 수도 있을 것 같습니다.
 
@@ -19,4 +20,4 @@
 
 
 ## Reference
-[1] FER2013 Dataset(Dumitru, Kaggle): https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/rules
+[1] FER2013 Dataset(Dumitru, Kaggle): [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/overview)
