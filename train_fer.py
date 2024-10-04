@@ -4,8 +4,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from src.dataloader import loadBatches
-from src.model import loadModel
+from src.dataloader_fer import loadBatches
+from src.model_fer import loadModel
 
 
 def train(model, train_batches, valid_batches, epochs, opt, cri, device):
