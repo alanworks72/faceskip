@@ -4,25 +4,26 @@ import torchvision.models as models
 
 
 class MobileNetV3(nn.Module):
-    def __init__(self, num_classes, pretrained=True, feature_extract=False):
+    def __init__(self, num_classes, weights=models.MobileNet_V3_Large_Weights.DEFAULT, feature_extract=False):
         super(MobileNetV3, self).__init__()
 
-        self.model = models.MobileNetV3(pretrained=pretrained)
+        self.model = models.mobilenet_v3_large(weights=weights)
         
         if feature_extract:
             self.FeatureExtract()
 
-        in_features = self.model.classifier[3].in_features
+        in_features = self.model.classifier[0].in_features
 
         self.model.classifier = nn.Sequential(
             nn.Linear(in_features=in_features, out_features=1024),
-            nn.ReLU(),
-            nn.Dropout(p=0.2),
+            nn.Hardswish(inplace=True),
+            nn.Dropout(p=0.2, inplace=True),
             nn.Linear(1024, num_classes)
         )
     
     def forward(self, x):
         x = self.model(x)
+
         return x
     
     def FeatureExtract(self):
@@ -30,7 +31,7 @@ class MobileNetV3(nn.Module):
             param.requires_grad = False
 
 
-def loadModel(num_classes, pretrained=True, feature_extract=True):
-    model = MobileNetV3(num_classes=num_classes, pretrained=pretrained, feature_extract=feature_extract)
+def loadModel(num_classes, weights=models.MobileNet_V3_Large_Weights.DEFAULT, feature_extract=True):
+    model = MobileNetV3(num_classes=num_classes, weights=weights, feature_extract=feature_extract)
 
     return model

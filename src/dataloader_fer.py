@@ -12,7 +12,8 @@ test_path = 'data/fer2013/test/'
 def loadBatches(batch_size, is_train=True):
     transform = transforms.Compose([
     transforms.ToTensor(),
-    transforms.Normalize(0.5,0.5)])
+    transforms.Resize((224,224)),
+    transforms.Normalize(mean=[0.507], std=[0.2551])])
 
     if is_train:
         train_data = ImageFolder(train_path, transform=transform)
