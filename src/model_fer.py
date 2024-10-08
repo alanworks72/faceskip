@@ -31,7 +31,7 @@ class MobileNetV3(nn.Module):
             param.requires_grad = False
 
 
-def loadModel(num_classes, weights=models.MobileNet_V3_Large_Weights.DEFAULT, feature_extract=True):
+def loadModel(num_classes, weights=models.MobileNet_V3_Large_Weights.DEFAULT, feature_extract=False):
     model = MobileNetV3(num_classes=num_classes, weights=weights, feature_extract=feature_extract)
 
     return model

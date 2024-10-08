@@ -32,7 +32,7 @@ def loadBatches(batch_size, is_train=True):
 
         return train_batches, valid_batches, norm_class_weights
     
-    test_data = ImageFolder(test_path)
+    test_data = ImageFolder(test_path, transform=transform)
     test_batches = DataLoader(test_data, batch_size=batch_size, shuffle=False, pin_memory=True)
 
     return test_batches

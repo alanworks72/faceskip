@@ -16,6 +16,7 @@ def train(model, train_batches, valid_batches, epochs, opt, cri, device, result_
     min_val_loss = torch.inf
 
     weight_path = result_path + "weights/"
+    checkDir(weight_path)
 
     for epoch in range(epochs):
         train_loss, valid_loss = 0., 0.
@@ -70,15 +71,14 @@ def train(model, train_batches, valid_batches, epochs, opt, cri, device, result_
         print(f'Epoch #{epoch} training loss: {train_loss:.5f}\tvalidation loss: {valid_loss:.5f}\n')
 
         if valid_loss < min_val_loss:
-            checkDir(weight_path)
             save_path = weight_path + f'epoch_{epoch}.pth'
             torch.save(model.state_dict(), save_path)
-            print(f"Validation loss decreased ({min_val_loss:.5f} --> {valid_loss:.5f})\nSaving current weight at: {save_path})")
+            print(f"Validation loss decreased ({min_val_loss:.5f} --> {valid_loss:.5f})\nSaving current weight at: {save_path})\n")
             min_val_loss = valid_loss
         elif epoch % 10 == 0:
             save_path = weight_path + f'epoch_{epoch}.pth'
             torch.save(model.state_dict(), save_path)
-            print(f"Training epochs {epoch}/{epochs}\nSaving current weight at: {save_path}")
+            print(f"Training epochs {epoch}/{epochs}\nSaving current weight at: {save_path}\n")
         elif epoch == epochs-1:
             save_path = weight_path + 'last.pth'
             torch.save(model.state_dict(), save_path)
@@ -104,10 +104,10 @@ def run():
     train_batches, valid_batches, weight = loadBatches(batch_size=32, is_train=True)
     weight = torch.tensor(weight, dtype=torch.float).to(device)
     
-    model = loadModel(num_classes=num_classes, feature_extract=True)
+    model = loadModel(num_classes=num_classes, feature_extract=False)
     model = model.to(device)
 
-    opt = optim.Adam(model.parameters(), lr=1e-4)
+    opt = optim.Adam(model.parameters(), lr=1e-3)
     cri = nn.CrossEntropyLoss(weight=weight)
 
     result_path = 'result/train/'

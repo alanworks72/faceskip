@@ -20,4 +20,5 @@
 
 
 ## Reference
-[1] FER2013 Dataset(Dumitru, Kaggle): [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/overview)
+[1] FER2013 Dataset(Dumitru, Kaggle): [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/overview)<br>
+[2] MobileNetV3(Andrew Howard et al.): [Searching for MobileNetV3](https://arxiv.org/abs/1905.02244)
